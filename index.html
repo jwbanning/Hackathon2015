@@ -45,6 +45,17 @@
             </div> -->
           </div>
         </header>
+        <div id="brands">
+          <h1 class="ui-widget-header">
+              Brands
+          </h1>
+          <div class="brand_container ui-widget-content">
+            <select>
+              <option ng-repeat='item in list1' ng-show="item.title" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list1" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}">{{item.title}}</option>
+            </select>
+          </div>
+        
+        </div>  
           <div id="products">
               <h1 class="ui-widget-header">
                   Products
@@ -82,7 +93,7 @@
 
           <div id="cart">
               <h1 class="ui-widget-header">
-                  Shopping Cart
+                  Product Groups
               </h1>
               <div class="ui-widget-content">
                   <ol data-drop="true" ng-model='list4' jqyoui-droppable="{multiple:true}">
@@ -92,6 +103,27 @@
                       </li>
                   </ol>
               </div>
+          </div>
+
+          <div id="variant">
+              <h1 class="ui-widget-header">
+                  Variant
+              </h1>
+              <div class="ui-widget-content">
+                  <ol data-drop="true" ng-model='list5' jqyoui-droppable="{multiple:true}">
+                      <li ng-repeat="item in list5 track by $index" ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list4" jqyoui-draggable="{index: {{$index}},animate:true}">{{item.title}}
+                      </li>
+                      <li class="placeholder" ng-hide="hideMe()">Add your items here
+                      </li>
+                  </ol>
+              </div>
+          </div>
+
+
+
+          <div class="btn_container">
+            <button type="submit" value="Submit">Submit</button>
+            <button type="cancel" value="Cancel">Cancel</button>
           </div>
 
         </div>
