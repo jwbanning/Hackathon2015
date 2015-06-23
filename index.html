@@ -1,115 +1,99 @@
 <!DOCTYPE html>
-
 <html ng-app="drag-and-drop">
+    <head lang="en">
+        <meta name="generator" content="HTML Tidy for Mac OS X (vers 31 October 2006 - Apple Inc. build 15.15), see www.w3.org">
+        <meta charset="utf-8">
+        <title>PG product builder</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js" type="text/javascript"></script>
+   
+    
+        <script src="angular-dragdrop.min.js" type="text/javascript"></script>
+        <script src="app.js" type="text/javascript"></script>
+    
+    <!-- CSS -->
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css">
+        <link href="css/main.css" rel="stylesheet" type="text/css">
+    
 
-  <head lang="en">
+    </head>
+    <body ng-controller="oneCtrl">
+    <div id="wrapper">
+        <header>
+          <div id="header" class="section">
+            <h1 id="logo"><a href="/en_US/index.shtml"><img src="http://media.pg.com/en_US/_images/logo.png" alt="P&amp;G logo" class="move_"><span class="move_">Procter &amp; Gamble</span></a></h1>
+            <a href="#main-content" id="skip-link" class="move_">Skip to main content</a>
+            <!-- <form id="site-search" method="GET" role="search" action="/en_US/_php/search.php">
+              <div>
+                <label for="search-text">Search</label>
+                <input id="search-text" name="searchtext" type="text" class="text" aria-required="true" aria-autocomplete="list" aria-controls="header-results-list" autocomplete="off">
+                <input type="submit" class="submit" value="Search">
+                <input type="hidden" name="category" value="">
+                <input type="hidden" name="numberOfRecord" value="10">
+                <input type="hidden" name="start" value="0">
+              </div>
+            </form>
+            <div id="corporate-navigation">
+              <ul class="nav">
+                <li class="nav-investor-relations"><a href="http://www.pginvestor.com/">Investor / Shareholder Relations</a></li>
+                <li class="nav-careers"><a href="http://pgcareers.com/">Careers</a></li>
+                <li class="nav-partners-suppliers"><a href="/en_US/partners_suppliers/index.shtml">Partners &amp; Suppliers</a></li>
+                <li class="nav-worldwide-sites"><a href="/en_US/worldwide_sites.shtml">WORLDWIDE SITES</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </header>
+          <div id="products">
+              <h1 class="ui-widget-header">
+                  Products
+              </h1>
+              <div id="catalog">
+                  <h2>
+                      <a href="#">T-Shirts</a>
+                  </h2>
+                  <div>
+                      <ul>
+                          <li ng-repeat='item in list1' ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list1" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}">{{item.title}}
+                          </li>
+                      </ul>
+                  </div>
+                  <h2>
+                      <a href="#">Bags</a>
+                  </h2>
+                  <div>
+                      <ul>
+                          <li ng-repeat='item in list2' ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list2" jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}">{{item.title}}
+                          </li>
+                      </ul>
+                  </div>
+                  <h2>
+                      <a href="#">Gadgets</a>
+                  </h2>
+                  <div>
+                      <ul>
+                          <li ng-repeat='item in list3' ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list3" jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}">{{item.title}}
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
 
-    <meta charset="utf-8">
-
-    <title>Drag & Drop: Multiple listsr</title>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="angular-dragdrop.min.js"></script>
-
-    <script src="app.js"></script>
-
-    <style>
-
-      .thumbnail { height: 280px !important; }
-
-      .btn-droppable { width: 180px; height: 30px; padding-left: 4px; }
-
-      .btn-draggable { width: 160px; }
-
-      .emage { height: 215px; }
-
-      h1 { padding: .2em; margin: 0; }
-
-      #products { float:left; width: 500px; margin-right: 2em; }
-
-      #cart { width: 200px; float: left; margin-top: 1em; }
-
-      #cart ol { margin: 0; padding: 1em 0 1em 3em; }
-
-    </style>
-
-  </head>
-
-  <body ng-controller="oneCtrl">
-
-    <div id="products">
-
-      <h1 class="ui-widget-header">Products</h1>
-
-      <div id="catalog">
-
-        <h2><a href="#">T-Shirts</a></h2>
-
-        <div>
-
-          <ul>
-
-            <li ng-repeat='item in list1' ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list1" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}">{{item.title}}</li>
-
-          </ul>
-
-        </div>
-
-        <h2><a href="#">Bags</a></h2>
-
-        <div>
-
-          <ul>
-
-            <li ng-repeat='item in list2' ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list2" jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}">{{item.title}}</li>
-
-          </ul>
-
-        </div>
-
-        <h2><a href="#">Gadgets</a></h2>
-
-        <div>
-
-          <ul>
-
-            <li ng-repeat='item in list3' ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list3" jqyoui-draggable="{index: {{$index}}, placeholder: 'keep'}">{{item.title}}</li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-    </div> 
-
-    <div id="cart">
-
-        <h1 class="ui-widget-header">Shopping Cart</h1>
-
-        <div class="ui-widget-content">
-
-            <ol data-drop="true" ng-model='list4' jqyoui-droppable="{multiple:true}">
-
-                <li ng-repeat="item in list4 track by $index" ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list4" jqyoui-draggable="{index: {{$index}},animate:true}">{{item.title}}</li>
-
-                <li class="placeholder" ng-hide="hideMe()">Add your items here</li>
-
-            </ol>
+          <div id="cart">
+              <h1 class="ui-widget-header">
+                  Shopping Cart
+              </h1>
+              <div class="ui-widget-content">
+                  <ol data-drop="true" ng-model='list4' jqyoui-droppable="{multiple:true}">
+                      <li ng-repeat="item in list4 track by $index" ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list4" jqyoui-draggable="{index: {{$index}},animate:true}">{{item.title}}
+                      </li>
+                      <li class="placeholder" ng-hide="hideMe()">Add your items here
+                      </li>
+                  </ol>
+              </div>
+          </div>
 
         </div>
-
-    </div>
-
-  </body>
-
+    </body>
 </html>
