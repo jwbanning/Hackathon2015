@@ -5,7 +5,7 @@
 h1 { padding: .2em; margin: 0; }
 #products { float:left; width: 500px; margin-right: 1.5em; }
 #cart { width: 200px; float: left; margin-top: 1em; }
-#cart ol { margin: 0; padding: 1em 0 1em 3em; }
+#cart ol, #variant ol { margin: 0; padding: 1em 0 1em 3em; }
 
 #variant {
   width: 200px;
