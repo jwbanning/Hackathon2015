@@ -25,14 +25,20 @@ App.factory("XLSXReaderService", ['$q', '$rootScope',
     }
 ]);
 
+App.factory("ReturnList", function (brand1) {
+
+
+
+});
+
 
 
 App.controller('oneCtrl', function($scope, $timeout, XLSXReaderService) {
 
     $scope.showDropDown = false
-    $scope.list1 = [{'title': 'Lolcat Shirt'},{'title': 'Cheezeburger Shirt'},{'title': 'Buckit Shirt'}];
-    $scope.list2 = [{'title': 'Zebra Striped'},{'title': 'Black Leather'},{'title': 'Alligator Leather'}];
-    $scope.list3 = [{'title': 'iPhone'},{'title': 'iPod'},{'title': 'iPad'}];
+//    //$scope.list1 = [{'title': 'Lolcat Shirt'},{'title': 'Cheezeburger Shirt'},{'title': 'Buckit Shirt'}];
+//    $scope.list2 = [{'title': 'Zebra Striped'},{'title': 'Black Leather'},{'title': 'Alligator Leather'}];
+//    $scope.list3 = [{'title': 'iPhone'},{'title': 'iPod'},{'title': 'iPad'}];
     $scope.list4 = [];
     $scope.hideMe = function() {
         return $scope.list4.length > 0;
@@ -51,10 +57,20 @@ App.controller('oneCtrl', function($scope, $timeout, XLSXReaderService) {
 
     $scope.update = function(){
         console.log($scope.brand.Brand);
-        $scope.showDropDown = true
-    }
+        $scope.list1 = $scope.getList($scope.brand.Brand);
+        $scope.showDropDown = true;
+    };
 
-
+    $scope.getList = function(brand) {
+        console.log(brand);
+        var tempList = [];
+        for(var i=0; i < $scope.columns.length ;i++) {
+            if($scope.columns[i].Brand === brand) {
+                tempList.push(($scope.columns[i]["Internal Product Name"]));
+            }
+        }
+        return tempList;
+    };
 
 });
 
