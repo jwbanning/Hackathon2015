@@ -114,8 +114,8 @@ App.directive("addDiv", function($compile){
                 var list = "list" + scope.listcount.toString();
                 scope[list] = [];
                 console.log(scope[list]);
-                console.log("I am in Add Div Me" + list)
-                angular.element(document.getElementById("group-container")).append($compile('<h1 class="ui-widget-header">' + scope.textGroup + '</h1><div class=\"ui-widget-content\"><ol data-drop=\"true\" ng-model="'+ list + '"jqyoui-droppable=\"{multiple:true}\"> </ol><li ng-repeat="item in '+ list +' track by $index" ng-show="item" data-drag="true" data-jqyoui-options="{revert: \'invalid\', helper: \'clone\'}" ng-model="' + list +'" jqyoui-draggable="{index: {{$index}},animate:true}">{{item}}</li><li class="placeholder" ng-hide="hideMe('+ list + ')">Add your items here</li></div>')(scope));
+                // console.log("I am in Add Div Me" + list)
+                angular.element(document.getElementById("group-container")).append($compile('<div class="addGroupContainer"><h1 class="ui-widget-header">' + scope.textGroup + '</h1><div class=\"ui-widget-content\"><ol data-drop=\"true\" ng-model="'+ list + '"jqyoui-droppable=\"{multiple:true}\"> <li ng-repeat="item in '+ list +' track by $index" ng-show="item" data-drag="true" data-jqyoui-options="{revert: \'invalid\', helper: \'clone\'}" ng-model="' + list +'" jqyoui-draggable="{index: {{$index}},animate:true}">{{item}}</li><li class="placeholder" ng-hide="hideMe('+ list + ')">Add your items here</li></ol></div></div>')(scope));
             });
     };
 });
