@@ -54,12 +54,20 @@
 
             <div id='uploadFile' >
                 <h1 class="ui-widget-header">
-                    Excel File
+                    File Upload
                 </h1>
                   <div class="brand_container ui-widget-content">
                     <input type="file" name="excel_file" accept=".xls" onchange="angular.element(this).scope().fileChanged(this.files);" required="true">
                   </div>          
                 </div>
+
+                <div class="btn_container">
+                  <button type="submit" value="Submit">Submit</button>
+                  <button type="cancel" value="Cancel">Cancel</button>
+
+                  <button class="lucky" type="lucky" value="Lucky">I am feeling Lucky</button>
+                </div>
+
 
             <div id="brands">
                 <h1 class="ui-widget-header">
@@ -77,8 +85,8 @@
                         Products
                     </h1>
                     <div id="catalog">
-                        <ul>
-                            <li ng-repeat='product in list1 track by $index' data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list1" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}">{{product}}
+                        <ul class="ulProduct">
+                            <li ng-repeat='product in list1 track by $index' data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list1" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}"><div class="productCount">{{$index +1}}. </div> <div class="productDesc">{{product}}</div>
                             </li>
                         </ul>
                     </div>
@@ -111,16 +119,6 @@
                     </div>
                 </div>
             </div>
-
-           
-
-          <div class="btn_container">
-            <button type="submit" value="Submit">Submit</button>
-            <button type="cancel" value="Cancel">Cancel</button>
-
-            <button class="lucky" type="lucky" value="Lucky">I am feeling Lucky</button>
-          </div>
-
 
         </div>
     </body>
