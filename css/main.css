@@ -88,6 +88,9 @@ body{
   padding-top: 100px;
   float: right;
 }
+.lucky{
+  margin-left:30px;
+}
 
 /*JQUERY UI OVERRIDES */
 #wrapper .ui-widget-header{
