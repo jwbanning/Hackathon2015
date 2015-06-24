@@ -71,7 +71,6 @@
             </div>
 
             <div ng-show="showDropDown">
-
                 <div id="products">
                     <h1 class="ui-widget-header">
                         Products
@@ -92,23 +91,11 @@
                       <ol data-drop="true" ng-model='list4' jqyoui-droppable="{multiple:true}">
                           <li ng-repeat="item in list4 track by $index" ng-show="item" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list4" jqyoui-draggable="{index: {{$index}},animate:true}">{{item}}
                           </li>
-                          <li class="placeholder" ng-hide="hideMe()">Add your items here
+                          <li class="placeholder" ng-hide="hideMe(list4)">Add your items here
                           </li>
                       </ol>
                   </div>
-                </div>
-                <div id="variant">
-                    <h1 class="ui-widget-header">
-                      Variant
-                    </h1>
-                    <div class="ui-widget-content">
-                        <ol data-drop="true" ng-model='list5' jqyoui-droppable="{multiple:true}">
-                            <li ng-repeat="item in list5 track by $index" ng-show="item.title" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="list4" jqyoui-draggable="{index: {{$index}},animate:true}">{{item.title}}
-                            </li>
-                            <li class="placeholder" ng-hide="hideMe()">Add your items here
-                            </li>
-                        </ol>
-                    </div>
+                  <div id="group-container"></div>
                 </div>
             </div>
 
@@ -119,6 +106,8 @@
             <button type="cancel" value="Cancel">Cancel</button>
 
             <button class="lucky" type="lucky" value="Lucky">I am feeling Lucky</button>
+            <button add-div>Add Group</button>
+            <input type="text" name="input" ng-model="textGroup"/>
           </div>
 
 
