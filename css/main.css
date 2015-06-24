@@ -99,3 +99,10 @@ body{
     border: 1px solid #1978E5;
     font-size: 20px;
 }
+
+#wrapper #uploadFile{
+    background-color: #007add;
+    background-image:none;
+    border: 0.5px solid #1978E5;
+    font-size: 10px;
+}
